@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Бункер: Зомби Апокалипсис</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom, #1e1e1e, #000000);
+      color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    h1 {
+      color: #e63946;
+      text-shadow: 0 0 10px #e63946;
+    }
+
+    .description {
+      max-width: 600px;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    button {
+      background-color: #e63946;
+      border: none;
+      color: white;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #c3273a;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    .card {
+      background-color: #2a2a2a;
+      border-left: 5px solid #e63946;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <h1>Бункер: Зомби Апокалипсис</h1>
+  <p class="description">
+    В этой игре ты окажешься в мире, охваченном зомби. Только ограниченное количество людей может попасть в бункер. Сможешь ли ты убедить остальных, что ты достоин выжить? Нажми кнопку, чтобы получить свои уникальные карточки!
+  </p>
+  <button id="generateBtn">Сгенерировать карточки</button>
+  <div class="cards" id="cardsContainer"></div>
+
+  <script>
+    const professions = ["Врач", "Инженер", "Повар", "Военный", "Учитель", "Фермер", "Строитель", "Химик", "Программист", "Водитель"];
+    const ages = ["22 года, женщина", "34 года, мужчина", "45 лет, женщина", "29 лет, мужчина", "50 лет, женщина"];
+    const health = ["Диабет", "Здоров", "Слеп на один глаз", "Беременна", "Астма"];
+    const hobbies = ["Охота", "Ремонт техники", "Йога", "Шахматы", "Травничество"];
+    const psych = ["Паранойя", "Лидерские качества", "Паникер", "Рационален", "Харизматичен"];
+    const item = ["Аптечка", "Старинная карта", "Ноутбук", "Топор", "Радио"];
+    const extra = ["Ранее сидел в тюрьме", "Спас ребенка от зомби", "Был ученым до апокалипсиса", "Скрывает тайну", "Психолог по образованию"];
+    const orientation = ["Гетеро", "Гомо", "Бисексуал", "Ассексуал"];
+    const condition = ["Носит защитный костюм", "Инфицирован, но стабилен", "Беременна", "Слегка ранен", "Уже был в бункере"];
+
+    let alreadyGenerated = false;
+
+    function getRandomFrom(array) {
+      return array[Math.floor(Math.random() * array.length)];
+    }
+
+    function generateCards() {
+      if (alreadyGenerated) return;
+      alreadyGenerated = true;
+
+      const categories = [professions, ages, health, hobbies, psych, item, extra, orientation, condition];
+      const container = document.getElementById('cardsContainer');
+      container.innerHTML = '';
+
+      categories.forEach((cat, i) => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerText = getRandomFrom(cat);
+        container.appendChild(card);
+      });
+    }
+
+    document.getElementById('generateBtn').addEventListener('click', generateCards);
+  </script>
+</body>
+</html>
