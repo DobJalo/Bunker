@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Бункер: Зомби Апокалипсис</title>
   <style>
     body {
@@ -58,6 +58,14 @@
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
     }
+
+    .category {
+      font-weight: 700;
+      color: #f87171;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+      text-transform: uppercase;
+    }
   </style>
 </head>
 <body>
@@ -69,15 +77,17 @@
   <div class="cards" id="cardsContainer"></div>
 
   <script>
-    const professions = ["Врач", "Инженер", "Повар", "Военный", "Учитель", "Фермер", "Строитель", "Химик", "Программист", "Водитель"];
-    const ages = ["22 года, женщина", "34 года, мужчина", "45 лет, женщина", "29 лет, мужчина", "50 лет, женщина"];
-    const health = ["Диабет", "Здоров", "Слеп на один глаз", "Беременна", "Астма"];
-    const hobbies = ["Охота", "Ремонт техники", "Йога", "Шахматы", "Травничество"];
-    const psych = ["Паранойя", "Лидерские качества", "Паникер", "Рационален", "Харизматичен"];
-    const item = ["Аптечка", "Старинная карта", "Ноутбук", "Топор", "Радио"];
-    const extra = ["Ранее сидел в тюрьме", "Спас ребенка от зомби", "Был ученым до апокалипсиса", "Скрывает тайну", "Психолог по образованию"];
-    const orientation = ["Гетеро", "Гомо", "Бисексуал", "Ассексуал"];
-    const condition = ["Носит защитный костюм", "Инфицирован, но стабилен", "Беременна", "Слегка ранен", "Уже был в бункере"];
+    const categories = [
+      { name: "Профессия", values: ["Врач", "Инженер", "Повар", "Военный", "Учитель", "Фермер", "Строитель", "Химик", "Программист", "Водитель"] },
+      { name: "Возраст и пол", values: ["22 года, женщина", "34 года, мужчина", "45 лет, женщина", "29 лет, мужчина", "50 лет, женщина"] },
+      { name: "Состояние здоровья", values: ["Диабет", "Здоров", "Слеп на один глаз", "Беременна", "Астма"] },
+      { name: "Хобби / Навык", values: ["Охота", "Ремонт техники", "Йога", "Шахматы", "Травничество"] },
+      { name: "Психологический тип", values: ["Паранойя", "Лидерские качества", "Паникер", "Рационален", "Харизматичен"] },
+      { name: "Личный предмет", values: ["Аптечка", "Старинная карта", "Ноутбук", "Топор", "Радио"] },
+      { name: "Дополнительный факт / секрет", values: ["Ранее сидел в тюрьме", "Спас ребенка от зомби", "Был ученым до апокалипсиса", "Скрывает тайну", "Психолог по образованию"] },
+      { name: "Сексуальная ориентация", values: ["Гетеро", "Гомо", "Бисексуал", "Ассексуал"] },
+      { name: "Особое состояние", values: ["Носит защитный костюм", "Инфицирован, но стабилен", "Беременна", "Слегка ранен", "Уже был в бункере"] }
+    ];
 
     let alreadyGenerated = false;
 
@@ -89,14 +99,22 @@
       if (alreadyGenerated) return;
       alreadyGenerated = true;
 
-      const categories = [professions, ages, health, hobbies, psych, item, extra, orientation, condition];
       const container = document.getElementById('cardsContainer');
       container.innerHTML = '';
 
-      categories.forEach((cat, i) => {
+      categories.forEach(cat => {
         const card = document.createElement('div');
         card.className = 'card';
-        card.innerText = getRandomFrom(cat);
+
+        const categoryTitle = document.createElement('div');
+        categoryTitle.className = 'category';
+        categoryTitle.textContent = cat.name;
+
+        const cardContent = document.createElement('div');
+        cardContent.textContent = getRandomFrom(cat.values);
+
+        card.appendChild(categoryTitle);
+        card.appendChild(cardContent);
         container.appendChild(card);
       });
     }
