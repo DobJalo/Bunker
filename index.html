@@ -78,16 +78,128 @@
 
   <script>
     const categories = [
-      { name: "Профессия", values: ["Врач", "Инженер", "Повар", "Военный", "Учитель", "Фермер", "Строитель", "Химик", "Программист", "Водитель"] },
-      { name: "Возраст и пол", values: ["22 года, женщина", "34 года, мужчина", "45 лет, женщина", "29 лет, мужчина", "50 лет, женщина"] },
-      { name: "Состояние здоровья", values: ["Диабет", "Здоров", "Слеп на один глаз", "Беременна", "Астма"] },
-      { name: "Хобби / Навык", values: ["Охота", "Ремонт техники", "Йога", "Шахматы", "Травничество"] },
-      { name: "Психологический тип", values: ["Паранойя", "Лидерские качества", "Паникер", "Рационален", "Харизматичен"] },
-      { name: "Личный предмет", values: ["Аптечка", "Старинная карта", "Ноутбук", "Топор", "Радио"] },
-      { name: "Дополнительный факт / секрет", values: ["Ранее сидел в тюрьме", "Спас ребенка от зомби", "Был ученым до апокалипсиса", "Скрывает тайну", "Психолог по образованию"] },
-      { name: "Сексуальная ориентация", values: ["Гетеро", "Гомо", "Бисексуал", "Ассексуал"] },
-      { name: "Особое состояние", values: ["Носит защитный костюм", "Инфицирован, но стабилен", "Беременна", "Слегка ранен", "Уже был в бункере"] }
-    ];
+  { name: "Profession", values: [
+    "Trauma Surgeon", "Biochemist", "Police Officer", "Electrician", "Botanist",
+    "Plumber", "Military Sniper", "Mechanic", "Pilot", "Nurse",
+    "Software Developer", "Farmer", "Psychologist", "Chef", "Hunter",
+    "Architect", "Carpenter", "Firefighter", "Midwife", "Teacher (High School)",
+    "Dentist", "Welder", "Pharmacist", "Librarian", "Soldier (Infantry)",
+    "Veterinarian", "Park Ranger", "Water Treatment Specialist", "Radio Operator", "Miner",
+    "Forensic Scientist", "Locksmith", "Baker", "Mortician", "Blacksmith",
+    "Bioweapons Expert", "Demolition Specialist", "Sanitation Worker", "Drone Pilot", "Genetic Engineer"
+  ]},
+  { name: "Age & Gender", values: [
+    "18, Male", "22, Female", "25, Nonbinary", "29, Female", "30, Male",
+    "33, Female", "36, Male", "38, Nonbinary", "40, Female", "43, Male",
+    "45, Female", "48, Male", "50, Female", "52, Male", "55, Female",
+    "58, Nonbinary", "60, Male", "63, Female", "65, Male", "68, Female",
+    "19, Male", "23, Female", "26, Male", "31, Female", "34, Male",
+    "37, Female", "41, Male", "44, Female", "46, Nonbinary", "49, Female",
+    "53, Male", "56, Female", "59, Male", "61, Female", "64, Male",
+    "67, Female", "70, Male", "72, Female", "75, Male", "77, Female"
+  ]},
+  { name: "Health Condition", values: [
+    "Perfect health", "Asthma", "Type 1 Diabetes", "Allergic to bee stings", "Missing left hand",
+    "Nearsighted", "Colorblind", "High blood pressure", "One kidney", "Wheelchair user",
+    "Deaf in one ear", "PTSD", "Cancer survivor", "Crohn’s disease", "Vertigo",
+    "Insomnia", "Claustrophobic", "Artificial hip", "Lactose intolerant", "Epileptic",
+    "Flat feet", "Obese", "Alcoholic (recovering)", "Paralyzed arm", "Pregnant",
+    "Chronic back pain", "Amputated leg (prosthetic)", "Severe allergies (dust, mold)", "Weak immune system", "Bipolar disorder",
+    "Schizophrenia (treated)", "Migraines", "Slow healing", "Speech impairment", "Hemophilia",
+    "Recent stroke survivor", "Partial deafness", "Severe anxiety disorder", "Arthritis", "Heart transplant (5 years ago)"
+  ]},
+  { name: "Hobby", values: [
+    "Hunting", "Wood carving", "Improvised weapons", "Cooking", "Blacksmithing",
+    "Navigation", "Herbal medicine", "Storytelling", "Dog training", "First aid",
+    "Climbing", "Foraging", "Soap-making", "Fishing", "Welding",
+    "Sewing", "Brewing alcohol", "Locksmithing", "Fire-starting", "Drawing maps",
+    "Gardening", "Tattooing", "Acting", "Singing", "Scavenging",
+    "Photography", "Building traps", "Knife throwing", "Leatherworking", "Sculpting",
+    "Bicycle repair", "Candle making", "Toy crafting", "Electronics repair", "Morse code",
+    "Public speaking", "Firearms maintenance", "Spear fishing", "Rainwater collection", "Animal husbandry"
+  ]},
+  { name: "Psychological Trait", values: [
+    "Calm under pressure", "Prone to panic", "Extremely logical", "Narcissist", "Depressive",
+    "Hero complex", "Empathetic", "Manipulative", "Paranoid", "Sociable",
+    "Silent observer", "Follower", "Dominant leader", "Nihilist", "Suicidal tendencies",
+    "Highly creative", "Obsessive-compulsive", "Jokes under stress", "Religious fanatic", "Anxious but focused",
+    "Aggressive under threat", "Easily influenced", "Natural motivator", "Cold and calculating", "Grief-stricken",
+    "Delusional", "Daydreamer", "Morally rigid", "Distrustful", "Charismatic",
+    "Emotionally unstable", "Addicted to praise", "Constant worrier", "Pathological liar", "Unshakable optimism",
+    "Easily bored", "Prefers solitude", "Feels responsible for group", "Afraid of failure", "Martyr complex"
+  ]},
+  { name: "Personal Item", values: [
+    "Fire axe", "Backpack of seeds", "Pocket knife", "Solar-powered flashlight", "Book on survival",
+    "Medical kit", "Family photo", "Water purifier", "5 cans of beans", "Fishing rod",
+    "Camping stove", "Deck of cards", "Old revolver with 3 bullets", "Crowbar", "Gas mask",
+    "Binoculars", "Notebook and pencil", "Flask of whiskey", "Set of keys (unknown locks)", "Broken radio transceiver",
+    "Flash drive with research data", "Journal of virus outbreak", "Bulletproof vest", "Dog leash and collar", "Pocket Bible",
+    "Sunglasses", "Bag of nails", "Collapsible tent", "Handmade knife", "Rope (10m)",
+    "Jar of honey", "Firestarter cube pack", "Homemade bomb", "Guitar", "Box of chocolate",
+    "Bag of vitamins", "Rusty chainsaw", "100 matches", "Compass", "Crate of bottled water"
+  ]},
+  { name: "Secret", values: [
+    "Killed someone in self-defense", "Secretly infected", "Immune to the virus", "Former criminal (theft)", "Hides food from others",
+    "Claustrophobic", "Ex-military deserter", "Has twin sibling (missing)", "Has knowledge of second bunker", "Has never killed",
+    "Refuses to eat meat", "Survivor of cult", "Can’t read", "Had an affair with another player", "Lost child in outbreak",
+    "Thinks the apocalypse is fake", "Former celebrity", "Believes voices guide them", "Took part in virus experiments", "Wants to rebuild religion",
+    "Escaped from prison", "Former addict", "Developed virus vaccine", "Hunted by a group of raiders", "Saw the first outbreak",
+    "Doesn't believe in violence", "Hoards supplies", "Faked a medical condition", "Secretly in love with another player", "Came from another survivor group",
+    "Lost entire family", "Killed a child", "Lied about profession", "Was in a bunker before", "Has a terminal illness",
+    "Believes zombies can be cured", "Escaped a zombie lab", "Is a government agent", "Mentally unstable", "Has been watching the group in secret"
+  ]},
+  { name: "Sexual Orientation", values: [
+    "Heterosexual", "Homosexual", "Bisexual", "Asexual", "Pansexual",
+    "Demisexual", "Questioning", "Aromantic", "Greysexual", "Polysexual",
+    "Lesbian", "Gay", "Heteroflexible", "Queer", "Straight but celibate",
+    "Intersex", "Transgender (M to F)", "Transgender (F to M)", "Nonbinary", "Doesn’t disclose",
+    "Sapiosexual", "Objectumsexual", "Biromantic", "Homoromantic", "Androsexual",
+    "Gynosexual", "Skoliosexual", "Omnisexual", "Straight with past same-sex experiences", "Closeted homosexual",
+    "Polyamorous", "Monogamous", "Demiromantic", "Lithromantic", "Cupiosexual",
+    "Greyromantic", "Panromantic", "Aroace", "Romantic but sex-repulsed", "Sexual orientation unknown (amnesia)"
+  ]},
+  { name: "Special Condition Card", values: [
+    "Second Chance – Cancel your own elimination.",
+    "Exchange Fate – Swap your full character with another.",
+    "Reveal the Truth – Force any player to reveal all cards.",
+    "Betrayal – Eliminate one player immediately.",
+    "Hidden Ally – If you’re eliminated, take someone with you.",
+    "Secret Exit – Survive regardless of voting.",
+    "Virus Sample – Threat: if you die, others might be infected.",
+    "Lockdown – End current round immediately.",
+    "Gift of Life – Sacrifice yourself for another.",
+    "Sabotage – Destroy a personal item.",
+    "Convincing Speech – Immunity for 2 rounds.",
+    "Fake Identity – Swap 1 card with deck.",
+    "Silence – Prevent 1 player from speaking.",
+    "Emergency Supplies – Draw 1 extra item card.",
+    "Unmask – Privately see another’s cards.",
+    "Vote Reset – Cancel last vote, revote.",
+    "Change of Heart – Change your vote last second.",
+    "Loyal Companion – Bring one with you if you die.",
+    "Double Agent – Win alone if you survive.",
+    "Medic Protocol – Heal any player’s condition.",
+    "Ghost Whisper – Ask one eliminated player for advice.",
+    "Reverse Elimination – Swap eliminated player with another.",
+    "Veto – Cancel any one played Special Card.",
+    "Bunker Blueprint – You know an escape tunnel location.",
+    "Brainwash – Force one player to vote your way.",
+    "Mask of Sanity – Appear healthy even if you’re not.",
+    "Ammo Stash – Secretly eliminate one player at any time.",
+    "Loyalty Oath – Team with one player: win or lose together.",
+    "Blackout – All players lose vision for one round.",
+    "False Hope – Give another player a fake special card.",
+    "Sacrifice – Trade your life for a teammate’s.",
+    "Reckoning – All players reveal their secrets.",
+    "Psychic Link – Communicate telepathically with one player.",
+    "Hidden Agenda – Secret mission card with goals.",
+    "False Identity – Appear as someone else for one round.",
+    "Survivor’s Guilt – Lose points if an ally dies.",
+    "Time Freeze – Skip next elimination round.",
+    "Legacy – Pass your special card on death."
+  ]}
+];
+
 
     let alreadyGenerated = false;
 
